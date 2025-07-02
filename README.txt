@@ -1,0 +1,1 @@
+Hướng dẫn triển khai bot: giải nén và deploy lên Railway. Thêm biến môi trường BOT_TOKEN và OPENAI_API_KEY.

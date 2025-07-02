@@ -1,0 +1,4 @@
+{
+  "allowed_prefixes": ["/", "!", "@"],
+  "reply_mode": true
+}
