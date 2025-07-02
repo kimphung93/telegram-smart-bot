@@ -1,16 +1,14 @@
+from pyrogram import Client, filters
 import os
-from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
-BOT_TOKEN = os.getenv("BOT_TOKEN")
+api_id = int(os.getenv("API_ID"))
+api_hash = os.getenv("API_HASH")
+bot_token = os.getenv("BOT_TOKEN")
 
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("🤖 Chào bạn! Bot đã sẵn sàng.")
+app = Client("my_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
-if __name__ == "__main__":
-    print("🔁 Bot is starting...")
-    app = ApplicationBuilder().token(BOT_TOKEN).build()
+@app.on_message(filters.command("start"))
+def start_command(client, message):
+    message.reply_text("Xin chào! Bot đã sẵn sàng hoạt động.")
 
-    app.add_handler(CommandHandler("start", start))
-
-    app.run_polling()
+app.run()
